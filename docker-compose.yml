@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+    ports:
+      - "3008:3008"
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      - HOME=/root # Necessário para o caminho ~/.ssh
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3009:3009"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
