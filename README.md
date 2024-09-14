@@ -9,3 +9,6 @@ docker exec -it 07f453e3cfaa sh
 
 
 mongo --host localhost --port 27017 -u "root" -p "root123" --authenticationDatabase "admin"
+
+
+ssh root@64.227.98.132

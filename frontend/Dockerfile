@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expõe a porta que será usada pela aplicação (a porta padrão de desenvolvimento do React é 3000)
-EXPOSE 3008
+EXPOSE 3009
 
 # Comando para iniciar o servidor de desenvolvimento
 CMD ["npm", "start"]
