@@ -8,6 +8,7 @@ services:
       - "3008:3008"
     volumes:
       - ./backend:/usr/src/app
+      - ~/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro # Mapeamento do authorized_keys
     environment:
       - HOME=/root # Necessário para o caminho ~/.ssh
     networks:
