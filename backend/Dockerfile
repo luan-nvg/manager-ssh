@@ -1,20 +1,20 @@
-# Usando a imagem oficial do Node.js
-FROM node:18
+FROM node:14
 
-# Define o diretório de trabalho dentro do container
-WORKDIR /usr/src/app
+# Cria o diretório .ssh e define as permissões
+RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh
 
-# Copia os arquivos package.json e package-lock.json
-COPY package*.json ./
+# Copia o código do backend para o diretório /usr/src/app
+WORKDIR /backend
 
-# Instala as dependências
+# Copia o script de entrada
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
+
+# Instala as dependências do backend
 RUN npm install
 
-# Copia todo o código do backend para o diretório de trabalho
-COPY . .
+COPY src/ src/
 
-# Expõe a porta que o backend usará
-EXPOSE 3008
-
-# Inicia o servidor backend
-CMD ["node", "app.js"]
+# Define o comando para iniciar o backend
+# ENTRYPOINT ["/entrypoint.sh"]
+CMD ["npm", "start"]

@@ -1,22 +1,24 @@
-version: '3.8'
+version: '3.5'
 
 services:
   backend:
-    build: 
+    build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "3008:3008"
     volumes:
-      - ./backend:/usr/src/app
-      - ~/.ssh/authorized_keys:/root/.ssh/authorized_keys:ro # Mapeamento do authorized_keys
+      - ./backend:/backend
+      - /backend/node_modules
     environment:
-      - HOME=/root # Necessário para o caminho ~/.ssh
+      - HOME=/root
     networks:
       - app-network
 
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "3009:3009"
     networks:
