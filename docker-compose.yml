@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   backend:
@@ -10,6 +10,7 @@ services:
     volumes:
       - ./backend:/backend
       - /backend/node_modules
+      - ~/.ssh/authorized_keys:/root/.ssh/authorized_keys
     environment:
       - HOME=/root
     networks:

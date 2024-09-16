@@ -102,6 +102,7 @@ app.delete("/keys", verifyToken, (req, res) => {
     const newKeys = keys.filter((key) => key !== keyToRemove);
 
     fs.writeFile(filePath, newKeys.join("\n") + "\n", (err) => {
+      console.log(err);
       if (err) {
         return res.status(500).send("Erro ao remover a chave");
       }

@@ -2,7 +2,7 @@
 FROM node:14
 
 # Cria o diretório .ssh e define as permissões
-RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh
+#RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh
 
 # Define o diretório de trabalho
 WORKDIR /backend
@@ -16,5 +16,10 @@ RUN npm install
 # Copia o restante do código do backend para o container
 COPY . .
 
+# Copia o script de entrada
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 # Define o comando para iniciar o backend
 CMD ["npm", "start"]
